@@ -29,4 +29,24 @@ export class CategoryService {
 
     return this.http.get(this.url + 'category', {headers});
   }
+
+  getCategory(categoryId): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this.http.get(this.url + 'category/' + categoryId, {headers});
+  }
+
+
+
+  getPosts(categoryId): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this.http.get(this.url + 'post/category/' + categoryId, {headers});
+  }
+
+
+
+
 }

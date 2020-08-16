@@ -11,6 +11,8 @@ import {UserEditComponent} from './components/user-edit/user-edit.component';
 import {CategoryNewComponent} from './components/category-new/category-new.component';
 import {PostNewComponent} from './components/post-new/post-new.component';
 import {PostDetailComponent} from './components/post-detail/post-detail.component';
+import {PostEditComponent} from './components/post-edit/post-edit.component';
+import {CategoryDetailComponent} from './components/category-detail/category-detail.component';
 
 // Rutas
 const appRoutes: Routes = [
@@ -23,6 +25,8 @@ const appRoutes: Routes = [
   {path: 'crear-categoria', component: CategoryNewComponent},
   {path: 'crear-entrada', component: PostNewComponent},
   {path: 'entrada/:id', component: PostDetailComponent},
+  {path: 'editar/:id', component: PostEditComponent},
+  {path: 'categoria/:id', component: CategoryDetailComponent},
   {path: '**', component: ErrorComponent},
 ];
 
