@@ -1,0 +1,77 @@
+<div class="col-md-12 mt-3">
+
+  <h1>{{pageTitle}}</h1>
+  <p *ngIf="status!='success'">
+    Crea una nueva entrada.
+  </p>
+
+  <hr/>
+
+  <!-- Status -->
+  <div class="alert-success col-md-5 mt-3" *ngIf="status === 'success'">
+    La entrada se ha creado correctamente.
+  </div>
+  <div class="alert-error col-md-5 mt-3" *ngIf="status === 'error'">
+    La entrada no se ha podido crear.
+  </div>
+  <!-- FIN Status -->
+
+  <!-- Form crear entrada -->
+  <form class="col-md-5 ml-0 pl-0"
+        #postNewForm="ngForm" (ngSubmit)="onSubmit(postNewForm)">
+    <div class="form-group">
+      <label>Título
+        <input type="text" name="titulo" class="form-control" pattern="[a-zA-Z\s]+"
+               #name="ngModel" [(ngModel)]="post.title" required>
+      </label>
+
+      <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+        El campo título no es válido.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Contenido
+        <textarea type="text" name="content" class="form-control"
+                  #content="ngModel" [(ngModel)]="post.content" required></textarea>
+      </label>
+
+      <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+        El campo contentido no es válido.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Lista categorías
+        <select type="text" name="category" class="form-control"
+                #category="ngModel" [(ngModel)]="post.category_id" required>
+          <option *ngFor="let category of categories" value="{{category.id}}">
+            {{category.name}}
+          </option>
+        </select>
+      </label>
+
+      <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+        El campo categoría no es válido.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Imagen
+        <angular-file-uploader [config]="afuConfig"
+                               (ApiResponse)="imageUpload($event)">
+        </angular-file-uploader>
+      </label>
+
+      <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+        El campo imagen no es válido.
+      </small>
+    </div>
+
+
+    <input type="submit" value="Crear entrada" class="btn btn-success"
+           [disabled]="postNewForm.invalid">
+  </form>
+
+  <br>
+</div>

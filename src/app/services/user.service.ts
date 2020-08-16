@@ -19,14 +19,12 @@ export class UserService {
   public url: string;
   public identity;
   public token;
+  public imageUrl: string;
 
   constructor(public http: HttpClient) {
     this.url = global.url;
   }
 
-  test() {
-    return 'Hola Mundo desde un servicio!';
-  }
 
   register(user): Observable<any> {
     const json = JSON.stringify(user);
@@ -46,6 +44,18 @@ export class UserService {
     const headers = new HttpHeaders().set('Content-type', 'application/x-www-form-urlencoded');
 
     return this.http.post(this.url + 'login', params, {headers});
+  }
+
+
+  update(token, user): Observable<any> {
+    const json = JSON.stringify(user);
+    const params = 'json=' + json;
+
+    const headers = new HttpHeaders()
+      .set('Content-type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token);
+
+    return this.http.put(this.url + 'user/update', params, {headers});
   }
 
 

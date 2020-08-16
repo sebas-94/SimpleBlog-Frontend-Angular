@@ -1,0 +1,40 @@
+<div class="col-md-12 mt-3">
+
+  <h1>{{pageTitle}}</h1>
+  <p *ngIf="status!='success'">
+    Crea una nueva categoría.
+  </p>
+
+  <hr/>
+
+  <!-- Status -->
+  <div class="alert-success col-md-5 mt-3" *ngIf="status === 'success'">
+    Los datos se han actualizado correctamente.
+  </div>
+  <div class="alert-error col-md-5 mt-3" *ngIf="status === 'error'">
+    Los datos no han podido ser actualizados.
+  </div>
+  <!-- FIN Status -->
+
+  <!-- Form crear categoría -->
+  <form class="col-md-5 ml-0 pl-0"
+        #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
+    <div class="form-group">
+      <label>Nombre categoría
+        <input type="text" name="name" class="form-control" pattern="[a-zA-Z]+"
+               #name="ngModel" [(ngModel)]="category.name" required>
+      </label>
+
+      <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+        El campo nombre-categoría no es válido.
+      </small>
+    </div>
+
+
+    <input type="submit" value="Guardar cambios" class="btn btn-success"
+           [disabled]="categoryForm.invalid">
+  </form>
+
+  <br>
+
+</div>

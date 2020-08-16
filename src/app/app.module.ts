@@ -12,6 +12,11 @@ import {ErrorComponent} from './components/error/error.component';
 import {FormsModule} from '@angular/forms';
 import {routing, appRoutingProviders} from './app.routing';
 import {HttpClientModule} from '@angular/common/http';
+import {UserEditComponent} from './components/user-edit/user-edit.component';
+import {AngularFileUploaderModule} from 'angular-file-uploader';
+import { CategoryNewComponent } from './components/category-new/category-new.component';
+import { PostNewComponent } from './components/post-new/post-new.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +24,18 @@ import {HttpClientModule} from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    UserEditComponent,
+    CategoryNewComponent,
+    PostNewComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,
     routing,
     FormsModule,
     HttpClientModule,
+    AngularFileUploaderModule
   ],
   providers: [
     appRoutingProviders
