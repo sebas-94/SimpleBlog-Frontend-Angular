@@ -6,7 +6,12 @@
   <h1>{{post.title}}</h1>
   <hr>
 
-  <p>{{post.category.name}} - {{post.user.name + ' ' + post.user.surname}}</p>
+  <p>
+    {{post.category.name}} -
+    <a [routerLink]="['/perfil', post.user.id]">
+      {{post.user.name + ' ' + post.user.surname}}
+    </a>
+  </p>
   <hr>
 
   <p [innerHTML]="post.content"></p>

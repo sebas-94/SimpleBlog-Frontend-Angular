@@ -27,7 +27,6 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    console.log('onInit');
     this.getCategories();
   }
 

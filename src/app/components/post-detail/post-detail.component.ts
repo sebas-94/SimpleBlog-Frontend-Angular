@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {PostService} from '../../services/post.service';
-import {Post} from '../../models/post';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -11,11 +10,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class PostDetailComponent implements OnInit {
 
   public post: any;
+  public identity;
 
-  constructor(public postService: PostService,
+  constructor(private postService: PostService,
               private route: ActivatedRoute,
               private router: Router) {
-
   }
 
   ngOnInit(): void {

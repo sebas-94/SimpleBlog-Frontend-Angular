@@ -58,6 +58,11 @@
 
     <div class="form-group">
       <label>Imagen
+
+        <div *ngIf="post.image" class="mb-2">
+          <img src="{{url + 'post/image/' + post.image}}" style="width: 80px">
+        </div>
+
         <angular-file-uploader [config]="afuConfig"
                                (ApiResponse)="imageUpload($event)">
         </angular-file-uploader>

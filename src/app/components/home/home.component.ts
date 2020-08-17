@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
         this.pageTitle = 'Inicio';
         this.url = global.url;
         this.identity = this.userService.getIdentity();
-        console.log(this.identity);
         this.token = this.userService.getToken();
     }
 

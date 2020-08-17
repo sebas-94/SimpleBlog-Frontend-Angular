@@ -20,6 +20,7 @@ export class PostEditComponent implements OnInit {
   public post: any;
   public status: string;
   public categories: Array<Category>;
+  public url;
   public afuConfig = {
     multiple: false,
     formatsAllowed: '.jpg, .jpeg, .png, .gif',
@@ -48,6 +49,7 @@ export class PostEditComponent implements OnInit {
     this.pageTitle = 'Editar entrada';
     this.identity = this.userService.getIdentity();
     this.token = this.userService.getToken();
+    this.url = global.url;
   }
 
   ngOnInit(): void {
@@ -84,6 +86,14 @@ export class PostEditComponent implements OnInit {
         response => {
           if (response.status === 'success') {
             this.post = response.post;
+
+            // Comprueba si es nuestro o no el post
+            if (this.post.user.id !== this.identity.sub) {
+              console.log('no es mi entrada, redirige');
+              this.router.navigate(['/inicio']);
+            }
+
+
           } else {
             this.router.navigate(['/inicio']);
           }

@@ -46,7 +46,7 @@
             <a class="dropdown-item" [routerLink]="['/crear-entrada']">Crear entrada</a>
             <a class="dropdown-item" [routerLink]="['/crear-categoria']">Crear categoría</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Mi perfil</a>
+            <a class="dropdown-item" [routerLink]="['/perfil', identity.sub]">Mi perfil</a>
             <a class="dropdown-item" [routerLink]="['/ajustes']">Ajustes</a>
             <a class="dropdown-item" [routerLink]="['/logout/1']">Cerrar sesión</a>
           </div>
