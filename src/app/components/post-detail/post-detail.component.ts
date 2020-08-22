@@ -30,7 +30,6 @@ export class PostDetailComponent implements OnInit {
         response => {
           if (response.status === 'success') {
             this.post = response.post;
-            console.log(this.post);
           } else {
             this.router.navigate(['/inicio']);
           }

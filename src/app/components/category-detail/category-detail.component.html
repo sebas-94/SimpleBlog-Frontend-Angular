@@ -20,72 +20,13 @@
     No hay entradas que mostrar para esta categoría.
   </div>
 
-
-  <div class="card-columns" *ngIf="posts && posts.length >= 1">
-    <article class="card w-100" *ngFor="let post of posts">
-
-      <div class="card-header">
-        <h3>
-          <a [routerLink]="['/entrada', post.id]">{{post.title}}</a>
-        </h3>
-      </div>
-
-      <div class="card-body">
-        <!-- Imagen -->
-        <div class="w-100" style="height: 200px; overflow: hidden" *ngIf="post.image">
-          <img src="{{url +'post/image/' +post.image}}" class="w-100">
-        </div>
-
-        <div class="w-100" style="height: 200px; overflow: hidden" *ngIf="!post.image">
-          <img src="https://via.placeholder.com/400x250" class="w-100">
-        </div>
-
-        <!-- Botones -->
-        <div class="mt3">
-          <a [routerLink]="['/entrada', post.id]" class="btn btn-success mr-2">Leer</a>
-          <span *ngIf="identity && identity.sub == post.user_id">
-            <a [routerLink]="['/editar', post.id]" class="btn btn-warning mr-2">Editar</a>
-
-            <!-- Button trigger modal -->
-          <button type="button" class="btn btn-danger"
-                  data-toggle="modal" [attr.data-target]="'#deleteModal'+post.id">
-            Borrar
-          </button>
-
-            <!-- Modal -->
-          <div class="modal fade" id="{{'deleteModal'+post.id}}" tabindex="-1" role="dialog"
-               aria-labelledby="exampleModalLabel"
-               aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="{{'deleteModalLabel'+post.id}}">Borrado</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  ¿Realmente deseas eliminar la entrada "{{post.title}}"?
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                  <!-- Button delete -->
-                  <a (click)="deletePost(post)" class="btn btn-danger" data-dismiss="modal">Borrar</a>
-                </div>
-              </div>
-            </div>
-          </div>
-            <!-- FIN MODAL -->
-          </span>
-
-
-        </div>
-
-      </div>
-
-    </article>
-  </div>
-
+  <!-- LISTADO DE POST -->
+  <app-post-list
+    [posts]=posts
+    [identity]="identity"
+    [url]="url"
+    (delete)="deletePost($event)">
+  </app-post-list>
 
 
 </div>

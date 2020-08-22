@@ -1,1 +1,31 @@
-<p>profile works!</p>
+<div>
+  <h1>{{pageTitle}}</h1>
+</div>
+<hr>
+
+<div class="loading" *ngIf="!posts">
+  Cargando...
+</div>
+
+<div class="container-fluid mt-3" *ngIf="posts">
+
+  <hr>
+  <div *ngIf="user">
+    <div style="width: 50px;height: 50px; border-radius: 50px;overflow: hidden" class="float-left mr-3">
+      <img [src]="url + 'user/avatar/' + identity.image" style="width: 60px" class="avatar_navbar">
+    </div>
+
+    <h1>Perfil de {{user.name + ' ' + user.surname}}</h1>
+    <p>{{user.description}}</p>
+  </div>
+  <hr>
+
+  <!-- LISTADO DE POST -->
+  <app-post-list
+    [posts]=posts
+    [identity]="identity"
+    [url]="url"
+    (delete)="deletePost($event)">
+  </app-post-list>
+
+</div>

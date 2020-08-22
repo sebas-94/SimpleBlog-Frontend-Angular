@@ -20,6 +20,7 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PostListComponent } from './components/post-list/post-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     PostDetailComponent,
     PostEditComponent,
     CategoryDetailComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
